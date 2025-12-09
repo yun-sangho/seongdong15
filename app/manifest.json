@@ -1,7 +1,7 @@
 {
-  "name": "버스 15 도착 알림",
-  "short_name": "Bus15",
-  "description": "대우아파트 · 두산아파트 115동 출발 버스 15 실시간 도착 정보",
+  "name": "성동 15 버스 도착 알림",
+  "short_name": "성동15",
+  "description": "대우아파트 · 두산아파트 115동 출발 성동 15 버스 실시간 도착 정보",
   "icons": [
     {
       "src": "/icons/bus-192.svg",
