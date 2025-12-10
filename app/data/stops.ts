@@ -20,3 +20,7 @@ export const STOP_LOOKUP = STOPS.reduce<Record<string, StopMeta>>(
   },
   {}
 );
+
+export function getStopMeta(stopId: string): StopMeta | undefined {
+  return STOP_LOOKUP[stopId];
+}
