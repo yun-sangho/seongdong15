@@ -22,12 +22,12 @@ export function InstallPrompt() {
   }
 
   return (
-    <div className="flex flex-wrap gap-1 rounded-2xl border border-zinc-200/60 bg-white/70 px-4 py-3 text-sm text-zinc-700 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-200">
+    <div className="flex flex-wrap gap-2 rounded-2xl border border-zinc-200/60 bg-white/70 px-4 py-3 text-sm text-zinc-700 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-200">
       스마트폰 홈화면에 추가하면 더 편리합니다.
       <Link
         href="https://it.donga.com/107319/"
         target="_blank"
-        className="ml-1 underline underline-offset-2"
+        className="underline underline-offset-2"
       >
         방법 알아보기
       </Link>
