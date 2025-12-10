@@ -4,12 +4,12 @@ export const STOPS: StopMeta[] = [
   {
     id: "dae-woo",
     name: "대우아파트",
-    description: "봉천동 방면 승차장",
+    description: "금호역 방면",
   },
   {
     id: "doosan-115",
     name: "두산아파트 115동",
-    description: "관악산 방면 승차장",
+    description: "대우아파트 방면",
   },
 ];
 

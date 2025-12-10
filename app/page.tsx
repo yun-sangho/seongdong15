@@ -8,17 +8,41 @@ import type { DayType, StopId } from "@/app/data/types";
 import { useHoliday } from "@/app/hooks/useHoliday";
 import { formatKstDate, formatTimeInKst } from "@/lib/time/kst";
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import Link from "next/link";
+import { useDepartures } from "./hooks/useDepartures";
+import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
-  const { overrideDayType, setOverrideDayType, fallbackMessage } = useHoliday();
+  const { overrideDayType, setOverrideDayType, fallbackMessage, dayType } =
+    useHoliday();
   const [selectedStop, setSelectedStop] = useState<StopId>(STOPS[0]?.id);
   const [currentTime, setCurrentTime] = useState(() => new Date());
+  const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(display-mode: standalone)");
+
+    const detectStandalone = () => {
+      const standaloneMatch = mediaQuery.matches;
+      const iosStandalone = (
+        window.navigator as unknown as { standalone?: boolean }
+      ).standalone;
+      const fromAndroidApp = document.referrer.startsWith("android-app://");
+      setIsStandalone(
+        Boolean(standaloneMatch || iosStandalone || fromAndroidApp)
+      );
+    };
+
+    detectStandalone();
+    mediaQuery.addEventListener("change", detectStandalone);
+    return () => mediaQuery.removeEventListener("change", detectStandalone);
   }, []);
 
   const handleOverride = (value: DayType | null) => {
@@ -31,7 +55,7 @@ export default function Home() {
 
   return (
     <div className="h-screen bg-background px-4 py-6 text-foreground">
-      <main className="mx-auto flex w-full max-w-md flex-col gap-6 h-full">
+      <main className="mx-auto flex h-full w-full max-w-md flex-col gap-6">
         <header>
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between gap-3">
@@ -84,11 +108,26 @@ export default function Home() {
             )}
           </div>
         </header>
-        <p>
-          <span>현재 시간: </span>
-          {formattedCurrentTime}
-        </p>
+        <div className="flex gap-2 items-center">
+          <p>
+            <span>현재 시간: </span>
+            {formattedCurrentTime}
+          </p>
+          <Badge>{dayType === "holiday" ? "휴일" : "평일"}</Badge>
+        </div>
         {selectedStop && <StopScheduleCard stopId={selectedStop} />}
+        {!isStandalone && (
+          <footer className="flex flex-wrap gap-1 rounded-2xl border border-zinc-200/60 bg-white/70 px-4 py-3 text-sm text-zinc-700 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-200">
+            스마트폰 홈화면에 추가하면 더 편리합니다.
+            <Link
+              href="https://it.donga.com/107319/"
+              target="_blank"
+              className="ml-1 underline underline-offset-2"
+            >
+              방법 알아보기
+            </Link>
+          </footer>
+        )}
       </main>
     </div>
   );

@@ -2,6 +2,15 @@
 
 import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { STOPS } from "@/app/data/stops";
 import type { StopId } from "@/app/data/types";
 import { formatDepartureTime } from "@/app/data/schedules";
@@ -25,6 +34,7 @@ function formatDiffMinutes(target: Date, now: Date): number {
 export function StopScheduleCard({ stopId }: StopScheduleCardProps) {
   const meta = getStopMeta(stopId);
   const { departures, schedule, dayType, now } = useDepartures(stopId);
+  const hasSchedule = schedule.some((entry) => entry.minutes.length > 0);
 
   const todaysDepartures = useMemo(
     () =>
@@ -73,33 +83,49 @@ export function StopScheduleCard({ stopId }: StopScheduleCardProps) {
           </p>
         )}
       </div>
-      <div className="flex items-center justify-between uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-        <span>전체 시간표</span>
-        <span>{dayType === "holiday" ? "휴일" : "평일"}</span>
-      </div>
-      <section className="space-y-3 flex-1 overflow-hidden">
-        <div className="h-full flex flex-col gap-2 overflow-y-auto text-sm">
-          {schedule.map((entry) => (
-            <div
-              key={`${entry.hour}`}
-              className="rounded-2xl border border-black/5 bg-white/70 p-3 dark:border-white/10 dark:bg-white/5"
-            >
-              <p className="text-md font-semibold text-zinc-500 dark:text-zinc-400">
-                {entry.hour}시
-              </p>
-              <p className="mt-1 text-base font-medium text-zinc-900 dark:text-white">
-                {entry.minutes.length > 0
-                  ? entry.minutes
-                      .map(
-                        (minute) => minute.toString().padStart(2, "0") + "분"
-                      )
-                      .join(" · ")
-                  : "운행 없음"}
-              </p>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button size="lg" variant="outline" className="w-full">
+            전체 시간표 보기
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{meta.name} 출발</DialogTitle>
+            <DialogDescription className="text-sm">
+              {meta.description} · {dayType === "holiday" ? "휴일" : "평일"}
+            </DialogDescription>
+          </DialogHeader>
+          {hasSchedule ? (
+            <div className="max-h-[60vh] overflow-y-auto space-y-3 pr-1">
+              {schedule.map((entry) => (
+                <div
+                  key={`${entry.hour}`}
+                  className="rounded-2xl border border-black/5 bg-white/70 p-3 dark:border-white/10 dark:bg-white/5"
+                >
+                  <p className="text-md font-semibold text-zinc-500 dark:text-zinc-400">
+                    {entry.hour}시
+                  </p>
+                  <p className="mt-1 text-base font-medium text-zinc-900 dark:text-white">
+                    {entry.minutes.length > 0
+                      ? entry.minutes
+                          .map(
+                            (minute) =>
+                              minute.toString().padStart(2, "0") + "분"
+                          )
+                          .join(" · ")
+                      : "운행 없음"}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          ) : (
+            <p className="text-center text-base text-zinc-500 dark:text-zinc-400">
+              오늘은 운행 일정이 없습니다.
+            </p>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
