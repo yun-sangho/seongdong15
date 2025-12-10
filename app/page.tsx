@@ -8,7 +8,6 @@ import type { DayType, StopId } from "@/app/data/types";
 import { useHoliday } from "@/app/hooks/useHoliday";
 import { formatKstDate, formatTimeInKst } from "@/lib/time/kst";
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { FullScheduleModal } from "@/components/full-schedule-modal";
 import { InstallPrompt } from "@/components/install-prompt";
@@ -18,32 +17,12 @@ export default function Home() {
     useHoliday();
   const [selectedStop, setSelectedStop] = useState<StopId>(STOPS[0]?.id);
   const [currentTime, setCurrentTime] = useState(() => new Date());
-  const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(display-mode: standalone)");
-
-    const detectStandalone = () => {
-      const standaloneMatch = mediaQuery.matches;
-      const iosStandalone = (
-        window.navigator as unknown as { standalone?: boolean }
-      ).standalone;
-      const fromAndroidApp = document.referrer.startsWith("android-app://");
-      setIsStandalone(
-        Boolean(standaloneMatch || iosStandalone || fromAndroidApp)
-      );
-    };
-
-    detectStandalone();
-    mediaQuery.addEventListener("change", detectStandalone);
-    return () => mediaQuery.removeEventListener("change", detectStandalone);
   }, []);
 
   const handleOverride = (value: DayType | null) => {
@@ -55,7 +34,7 @@ export default function Home() {
   )}`;
 
   return (
-    <div className="h-screen bg-background px-4 py-6 text-foreground">
+    <div className="h-dvh bg-background px-4 py-6 text-foreground">
       <main className="mx-auto flex h-full w-full max-w-md flex-col gap-4">
         <header>
           <div className="flex flex-col gap-4">
