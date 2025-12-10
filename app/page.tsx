@@ -40,7 +40,7 @@ export default function Home() {
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between gap-3">
               <h1 className="mt-1 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                성동 15 버스 알리미
+                성동 15 알리미
               </h1>
               <ModeToggle />
             </div>
