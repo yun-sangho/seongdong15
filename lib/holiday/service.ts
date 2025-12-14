@@ -52,6 +52,12 @@ export class HolidayService {
   }
 
   isHoliday(date: Date, record: HolidayRecord | null): DayType {
+    // Check if it's weekend (Saturday = 6, Sunday = 0)
+    const dayOfWeek = date.getDay();
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+      return "holiday";
+    }
+
     if (!record) {
       return "weekday";
     }
