@@ -2,7 +2,7 @@
   "dae-woo": {
     "weekday": [
       { "hour": 5, "minutes": [55] },
-      { "hour": 6, "minutes": [6, 33, 46, 59] },
+      { "hour": 6, "minutes": [20, 33, 46, 59] },
       { "hour": 7, "minutes": [12, 24, 36, 48] },
       { "hour": 8, "minutes": [0, 12, 24, 36, 48] },
       { "hour": 9, "minutes": [0, 13, 25, 50] },
@@ -16,7 +16,7 @@
       { "hour": 17, "minutes": [15, 28, 41, 54] },
       { "hour": 18, "minutes": [7, 20, 33, 46, 59] },
       { "hour": 19, "minutes": [12, 25, 38, 51] },
-      { "hour": 20, "minutes": [4, 17, 30, 43] },
+      { "hour": 20, "minutes": [4, 17, 30, 45] },
       { "hour": 21, "minutes": [0, 15, 30, 45] },
       { "hour": 22, "minutes": [0, 15, 30, 45] },
       { "hour": 23, "minutes": [0] }
@@ -32,40 +32,39 @@
       { "hour": 12, "minutes": [0, 13, 26, 39, 52] },
       { "hour": 13, "minutes": [5, 18, 31, 44, 57] },
       { "hour": 14, "minutes": [10, 23, 36, 49] },
-      { "hour": 15, "minutes": [2, 15, 30] },
-      { "hour": 16, "minutes": [0, 25, 50] },
+      { "hour": 15, "minutes": [2, 15, 40] },
+      { "hour": 16, "minutes": [5, 25, 50] },
       { "hour": 17, "minutes": [15, 28, 41, 54] },
       { "hour": 18, "minutes": [7, 20, 33, 46, 59] },
       { "hour": 19, "minutes": [12, 25, 38, 51] },
-      { "hour": 20, "minutes": [4, 20, 35, 50] },
-      { "hour": 21, "minutes": [5, 20, 35] },
-      { "hour": 22, "minutes": [10, 25, 40, 55] }
+      { "hour": 20, "minutes": [5, 30, 55] },
+      { "hour": 21, "minutes": [20, 45] },
+      { "hour": 22, "minutes": [10, 35] },
+      { "hour": 23, "minutes": [0] }
     ]
   },
   "doosan-115": {
     "weekday": [
-      { "hour": 5, "minutes": [10, 36, 49] },
       { "hour": 6, "minutes": [10, 36, 49] },
       { "hour": 7, "minutes": [2, 15, 28, 40, 52] },
       { "hour": 8, "minutes": [4, 16, 28, 40, 52] },
-      { "hour": 9, "minutes": [4, 17, 29, 54] },
+      { "hour": 9, "minutes": [4, 16, 29, 41] },
       { "hour": 10, "minutes": [5, 30, 55] },
       { "hour": 11, "minutes": [20, 46, 59] },
       { "hour": 12, "minutes": [12, 25, 38, 51] },
       { "hour": 13, "minutes": [4, 17, 30, 43, 56] },
       { "hour": 14, "minutes": [9, 22, 35, 48] },
-      { "hour": 15, "minutes": [1, 15, 28, 40, 53] },
+      { "hour": 15, "minutes": [1, 14, 26, 50] },
       { "hour": 16, "minutes": [15, 40] },
       { "hour": 17, "minutes": [5, 31, 44, 57] },
       { "hour": 18, "minutes": [10, 23, 36, 49] },
       { "hour": 19, "minutes": [2, 15, 28, 41, 54] },
-      { "hour": 20, "minutes": [7, 20, 33, 46, 59] },
-      { "hour": 21, "minutes": [12, 25, 38, 51] },
-      { "hour": 22, "minutes": [0, 15, 30, 45] },
-      { "hour": 23, "minutes": [0, 15] }
+      { "hour": 20, "minutes": [7, 20, 33, 45] },
+      { "hour": 21, "minutes": [0, 15, 30, 45] },
+      { "hour": 22, "minutes": [0, 15, 30, 45, 55] },
+      { "hour": 23, "minutes": [10] }
     ],
     "holiday": [
-      { "hour": 5, "minutes": [10, 36, 49] },
       { "hour": 6, "minutes": [10, 35] },
       { "hour": 7, "minutes": [0, 25, 50] },
       { "hour": 8, "minutes": [15, 40] },
@@ -74,15 +73,15 @@
       { "hour": 11, "minutes": [10, 24, 37, 50] },
       { "hour": 12, "minutes": [3, 16, 29, 42, 55] },
       { "hour": 13, "minutes": [8, 21, 34, 47] },
-      { "hour": 14, "minutes": [0, 15, 30, 45] },
-      { "hour": 15, "minutes": [0, 20, 40, 55] },
+      { "hour": 14, "minutes": [0, 13, 26, 39, 52] },
+      { "hour": 15, "minutes": [5, 18, 30, 55] },
       { "hour": 16, "minutes": [20, 40] },
-      { "hour": 17, "minutes": [5, 30, 55] },
+      { "hour": 17, "minutes": [5, 31, 44, 57] },
       { "hour": 18, "minutes": [10, 23, 36, 49] },
       { "hour": 19, "minutes": [2, 15, 28, 41, 54] },
-      { "hour": 20, "minutes": [7, 20, 35, 50] },
-      { "hour": 21, "minutes": [0, 15, 30, 45] },
-      { "hour": 22, "minutes": [0, 15, 30, 45] },
+      { "hour": 20, "minutes": [7, 20, 45] },
+      { "hour": 21, "minutes": [10, 35] },
+      { "hour": 22, "minutes": [0, 25, 50] },
       { "hour": 23, "minutes": [10] }
     ]
   }
